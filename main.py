@@ -117,8 +117,7 @@ async def upc_lookup(request: Request, upc: str):
     with open('data.json') as json_file:
         z = json.load(json_file)
     
-    print(z[upc])
-    return templates.TemplateResponse("index.html", {"request": request, "upc": upc, "data": z[upc]})
+    return {z[upc]}
 
 
 # @app.api_route("/{path_name:path}", methods=["GET"]) #CATCH ALL ROUTES FOR 404 ADD 2 Diffent Pages Based on Cookie Saves to Browser or not
@@ -126,6 +125,6 @@ async def upc_lookup(request: Request, upc: str):
 #     return "404 not found"
 
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("main:app", host="localhost", reload=True)
+# if __name__ == "__main__":
+#     import uvicorn
+#     uvicorn.run("main:app", host="localhost", reload=True)
