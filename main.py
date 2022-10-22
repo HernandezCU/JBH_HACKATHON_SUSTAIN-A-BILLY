@@ -110,20 +110,22 @@ async def logout(response: Response, request: Request):
     return response
 
 
-mat_types = ['cardboard', 'glass', 'metal', 'plastic', 'clothes', 'paper', 'papercup', 'battery', 'lightbulb', 'drugs']
-
 #https://fastapi.tiangolo.com/es/advanced/custom-response/#redirectresponse
-@app.post("/upc_lookup/{upc}/{url}", response_class=HTMLResponse)
-async def upc_lookup(request: Request, upc: str, url: str):
+@app.post("/upc_lookup", response_class=HTMLResponse)
+async def upc_lookup(request: Request, upc: str):
     i_upc = upc
-    return "upc: " + upc + " url: " + url
+    return 0
 
 
-@app.api_route("/{path_name:path}", methods=["GET"]) #CATCH ALL ROUTES FOR 404 ADD 2 Diffent Pages Based on Cookie Saves to Browser or not
-async def catch_all(request: Request, path_name: str):
-    return "404 not found"
+# @app.post("/upc_lookup/")
+# async def create_file(file: bytes = File()):
+#     return {"file_size": len(file)}
+
+# @app.api_route("/{path_name:path}", methods=["GET"]) #CATCH ALL ROUTES FOR 404 ADD 2 Diffent Pages Based on Cookie Saves to Browser or not
+# async def catch_all(request: Request, path_name: str):
+#     return "404 not found"
 
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("main:app", host="localhost", reload=True)
+# if __name__ == "__main__":
+#     import uvicorn
+#     uvicorn.run("main:app", host="localhost", reload=True)
