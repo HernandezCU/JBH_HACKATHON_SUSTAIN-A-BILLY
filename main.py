@@ -15,11 +15,10 @@ users_db = deta.Base("users")
 
 
 app = FastAPI()
-#app.mount("/assets", StaticFiles(directory="assets"), name="assets")
+app.mount("/assets", StaticFiles(directory="assets"), name="assets")
 
 templates = Jinja2Templates(directory="templates")
 
-#users = APIRouter(prefix="/users")
 
 app.add_middleware(
     CORSMiddleware,
@@ -38,7 +37,7 @@ async def root(request: Request):
     k = request.cookies.get("key")
 
     if k is None:
-        return templates.TemplateResponse("login.html", {"request": request})
+        return templates.TemplateResponse("test.html", {"request": request})
 
     else:
         try:
@@ -49,8 +48,6 @@ async def root(request: Request):
             raise HTTPException(status_code=422, detail="Something went wrong")
 
         return templates.TemplateResponse("index.html", {"request": request, "user": j.items[0]})
-
-    #return templates.TemplateResponse("login.html", {"request": request})
 
 
 @app.post("/login")
@@ -83,6 +80,7 @@ async def create_user(request: Request, response: Response, name: str = Form(...
     if j.count != 0:
         response = templates.TemplateResponse("redirect.html", {"request": request, "url": "/"})
         return response
+
 
     else:
         try:
@@ -124,4 +122,4 @@ async def catch_all(request: Request, path_name: str):
 
 # if __name__ == "__main__":
 #     import uvicorn
-#     uvicorn.run("main:app", host="localhost", reload=True)
+#     uvicorn.run("main:app", host="0.0.0.0", reload=True)

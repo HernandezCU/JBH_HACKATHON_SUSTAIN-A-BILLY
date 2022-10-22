@@ -1,3 +1,7 @@
+:root {
+    --green: #a7d86d;
+    --white: #ffffff; 
+  }
 html, body {
     margin: 0;
     padding: 0;
