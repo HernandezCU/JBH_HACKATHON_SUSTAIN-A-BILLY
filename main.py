@@ -105,14 +105,18 @@ async def logout(response: Response, request: Request):
 
     response = templates.TemplateResponse("redirect.html", {"request": request, "url": "/"})
     response.delete_cookie("key", path="/")
+    
+    
     return response
 
 
+mat_types = ['cardboard', 'glass', 'metal', 'plastic', 'clothes', 'paper', 'papercup', 'battery', 'lightbulb', 'drugs']
+
 #https://fastapi.tiangolo.com/es/advanced/custom-response/#redirectresponse
-@app.get("/upc_lookup/{upc}", response_class=HTMLResponse)
-async def upc_lookup(request: Request, upc: str):
+@app.get("/upc_lookup/{upc}/{url}", response_class=HTMLResponse)
+async def upc_lookup(request: Request, upc: str, url: str):
     i_upc = upc
-    return "upc: " + upc
+    return "upc: " + upc + " url: " + url
 
 
 @app.api_route("/{path_name:path}", methods=["GET"]) #CATCH ALL ROUTES FOR 404 ADD 2 Diffent Pages Based on Cookie Saves to Browser or not
