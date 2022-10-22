@@ -1,14 +1,6 @@
 const DEBUG = false;
 
-window.onload = () => {
-    //init element vars
-    var video = document.getElementById("video"),
-        canvas = document.getElementById("canvas"),
-        ctx = canvas.getContext("2d");
-    //get upc text element
-    const upcText = document.getElementById("upc");
-
-
+function camPerms() {
     //ask for video perm
     navigator.mediaDevices.getUserMedia({
         audio: false,
@@ -33,6 +25,18 @@ window.onload = () => {
     }).catch((err) => {
         console.error(err);
     });
+}
+
+window.onload = () => {
+    //init element vars
+    var video = document.getElementById("video"),
+        canvas = document.getElementById("canvas"),
+        ctx = canvas.getContext("2d");
+    //get upc text element
+    const upcText = document.getElementById("upc");
+
+
+    camPerms();
 
 
     //init quagga
@@ -78,12 +82,16 @@ window.onload = () => {
         if(!data.codeResult) return;
         makeRequest(data.codeResult.code, display); //wonk
         upcText.innerHTML = data.codeResult.code;
-        switchTo("info-cont");
+        switchToCont("info-cont");
 
-        //temporarily pause after scanning
-        video.pause();
-        setTimeout(() => {
-            video.play();
-        }, 500);
+        //stop scanning
+        Quagga.stop();
     });
 };
+
+function retry() {
+    showAllCont();
+    camPerms();
+    document.getElementsByTagName("video")[0].play();
+    Quagga.start();
+}

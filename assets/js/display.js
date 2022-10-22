@@ -1,24 +1,22 @@
 const conts = document.getElementsByClassName("cont");
 
-const nameEle = document.getElementById("prod-name"),
-    imgEle = document.getElementById("img"),
-    typeEle = document.getElementById("prod-type"),
-    footprintEle = document.getElementById("footprint"),
-    instructionEle = document.getElementById("instructions");
-
 function display(json) {
     console.debug(json);
-    return; //temp
-    nameEle.innerHTML;
-    imgEle.src;
-    typeEle.innerHTML;
-    footprintEle.innerHTML;
-    instructionEle.innerHTML;
+    document.getElementById("prod-name").innerHTML = json["type"];
+    document.getElementById("prod-type").innerHTML = json["material"];
+    document.getElementById("footprint").innerHTML = json["footprint"];
+    document.getElementById("instructions").innerHTML = json["instructions"];
 }
 
-function switchTo(className) {
+function switchToCont(className) {
     for(let cont of conts) {
         cont.style.display = "none";
     }
     document.getElementsByClassName(className)[0].style.display = "block";
+}
+
+function showAllCont() {
+    for(let cont of conts) {
+        cont.style.display = "block";
+    }
 }
