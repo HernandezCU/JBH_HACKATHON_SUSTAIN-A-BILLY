@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="{{ url_for('assets', path='css/login_form.css')}}">
+
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <h2 id="si" class="active" onclick="hide('reg', 'log', 'si', 'su');"> Sign In </h2>
+      <h2 id="su" class="inactive underlineHover" onclick="hide('log', 'reg', 'su', 'si');">Sign Up </h2>
+  
+      <!-- Login Form -->
+      <form id="log" action="/login" enctype="multipart/form-data" method="post">
+
+        <input type="text" id="email" class="fadeIn second" type="text" placeholder="Email" name="email" required>
+        <input type="password" id="password" class="fadeIn third" placeholder="Password" name="password" required>
+        <input type="submit" class="fadeIn fourth" value="Log In">
+
+      </form>
+
+      <form id="reg" style="display: none;" action="/register" enctype="multipart/form-data" method="post">
+
+        <input type="text" class="fadeIn second" type="text" id="name" placeholder="Name" name="name" required>
+        <input type="text" class="fadeIn third" type="email" id="email" placeholder="Email" name="email" required>
+        <input type="password" class="fadeIn fourth" type="password" id="password" placeholder="Password" name="password" required>
+        <input type="submit" class="fadeIn fifth" value="Log In">
+
+      </form>
+  
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="#">Forgot Password?</a>
+      </div>
+  
+    </div>
+  </div>
+
+  <script>
+    function hide(h, uh, sender, ns){
+        document.getElementById(h).style.display = 'none';
+        document.getElementById(ns).className = "inactive underlineHover";
+        document.getElementById(uh).style.display = 'block';
+        document.getElementById(sender).className = "active";
+    }
+</script>
