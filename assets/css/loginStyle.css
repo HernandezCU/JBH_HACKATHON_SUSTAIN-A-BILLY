@@ -1,33 +1,42 @@
-body{
-    background:rgb(133, 212, 133);
-    margin:0;
-    position:absolute;
-    top:50%;
-    left:50%;
-    -ms-transform:translate(-50%,-50%);
-    transform:translate(-50%,-50%);
+body {
+    background: rgb(133, 212, 133);
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 
 }
-header{
-    text-align:center;
-    font-size:50px;
+
+header {
+    text-align: center;
+    font-size: 50px;
     font-family: 'Mukta', sans-serif;
-    font-weight:1000;
-    
-}
-button, input{
-    margin:15px auto;
-    display:flex;
-    border:none;
-    border-radius:5px;
-    font-size:30px;
+    font-weight: 1000;
 
 }
-p{
-    font-family: 'Mukta', sans-serif;
-    text-align:center;
-    font-size:20px;
+
+button,
+input {
+    margin: 15px auto;
+    display: flex;
+    border: none;
+    border-radius: 5px;
+    font-size: 30px;
+
 }
-#register{
-    display:none;
+
+p {
+    font-family: 'Mukta', sans-serif;
+    text-align: center;
+    font-size: 20px;
+}
+
+#login {
+    visibility: visible;
+}
+
+#register {
+    visibility: hidden;
 }
