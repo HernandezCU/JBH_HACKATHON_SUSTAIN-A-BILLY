@@ -5,14 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/loginStyle.css">
     <link rel="stylesheet" href="loginStyle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200&display=swap" rel="stylesheet">
     <title>Login</title>
+   
 </head>
 
 <body>
+    <header>Sustainabiliy</header>
     <div id="login">
         <form class="user" action="/login" enctype="multipart/form-data" method="post">
             <input class="form-control form-control-user mb-md-3" type="text" id="email" placeholder="Email"
@@ -23,7 +26,7 @@
         </form>
     </div>
     <div id="register">
-        <p>Dont have an account, Sign Up</p>
+        <p>Dont have an account? Sign Up</p>
         <form class="user" action="/register" enctype="multipart/form-data" method="post">
             <input class="form-control form-control-user mb-md-3" type="text" id="name" placeholder="Name" name="name"
                 required>

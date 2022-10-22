@@ -1,9 +1,11 @@
-body{
-font-family: 'Mukta', sans-serif;
-}
-#login{
 
+input, button{
+    margin:10px auto;
+    display:flex;
+}
+p{
+    font-family: 'Mukta', sans-serif;
 }
 #register{
-
+    display:none;
 }
