@@ -1,0 +1,13 @@
+
+
+
+
+#camera-display {
+    position: absolute;
+    width: 640px;
+    height: 380px;
+    border: 2px solid #f00;
+}
+#canvas {
+    position: absolute;
+}
