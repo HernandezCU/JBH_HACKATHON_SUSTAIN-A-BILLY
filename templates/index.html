@@ -4,19 +4,21 @@
 
         <title>Scanner</title>
 
-        <link href="../assets/css/style.css" type="text/css" rel="stylesheet"/>
+        <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
         <script src="../assets/js/quagga.js"></script>
         <script src="../assets/js/request.js"></script>
+        <script src="../assets/js/display.js"></script>
         <script src="../assets/js/camera.js"></script>
-
     </head>
     <body>
         <div class="camera-cont">
-            <div id="video"></div>
-            <canvas id="canvas"></canvas>
+            <div id="video">
+                <canvas id="canvas"></canvas>
+            </div>
         </div>
         <div class="info-cont">
             <h1 id="upc">upc here</h1>
+            <img id="img"/>
         </div>
     </body>
 </html>

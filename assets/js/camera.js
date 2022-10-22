@@ -1,8 +1,13 @@
-const DEBUG = true;
+const DEBUG = false;
 
 window.onload = () => {
-    //init video
-    var video = document.getElementById("video");
+    //init element vars
+    var video = document.getElementById("video"),
+        canvas = document.getElementById("canvas"),
+        ctx = canvas.getContext("2d");
+    //get upc text element
+    const upcText = document.getElementById("upc");
+
 
     //ask for video perm
     navigator.mediaDevices.getUserMedia({
@@ -15,21 +20,19 @@ window.onload = () => {
         video.srcObject = mediaStream;
         video = document.getElementsByTagName("video")[0];
         video.play();
+
+        //init canvas
+        setTimeout(() => {
+            canvas = document.getElementById("canvas");
+            ctx = canvas.getContext("2d");
+            canvas.width = video.clientWidth;
+            canvas.height = video.clientHeight;
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "#0f0";
+        }, 500);
     }).catch((err) => {
         console.error(err);
     });
-
-
-    //init canvas
-    const canvas = document.getElementById("canvas");
-    const ctx = canvas.getContext("2d");
-    canvas.width = video.clientWidth;
-    canvas.height = video.clientHeight;
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = "#0f0";
-
-    //get upc text element
-    const upcText = document.getElementById("upc");
 
 
     //init quagga
@@ -71,11 +74,12 @@ window.onload = () => {
             }
         }
 
-        //update upc if it exists
+        //update upc if it exists then other info
         if(!data.codeResult) return;
-        makeRequest(data.codeResult.code);
+        display(makeRequest(data.codeResult.code));
         upcText.innerHTML = data.codeResult.code;
-        //
+
+        //temporarily pause after scanning
         video.pause();
         setTimeout(() => {
             video.play();
