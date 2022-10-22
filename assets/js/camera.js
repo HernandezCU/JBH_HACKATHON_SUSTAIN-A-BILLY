@@ -31,7 +31,7 @@ window.onload = () => {
             ctx.strokeStyle = "#0f0";
         }, 500);
     }).catch((err) => {
-        // console.error(err);
+        console.error(err);
     });
 
 
@@ -76,7 +76,7 @@ window.onload = () => {
 
         //update upc if it exists then other info
         if(!data.codeResult) return;
-        //makeRequest(data.codeResult.code, display); //weird but dk
+        makeRequest(data.codeResult.code);
         upcText.innerHTML = data.codeResult.code;
         switchTo("info-cont");
 
