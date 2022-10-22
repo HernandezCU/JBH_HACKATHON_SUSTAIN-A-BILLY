@@ -1,5 +1,0 @@
-"046500024719": {
-    "type": "Glade Plugins Apple of my Pie 1.34oz Refill",
-    "footprint": "1.3g. Takes up to 450 years to decompose. Plastics can also leach chemicals into soil and ground water as they decompose.",
-    "instructions": "Remove glass containers, and recycle cardboard and plastic caps."
-}

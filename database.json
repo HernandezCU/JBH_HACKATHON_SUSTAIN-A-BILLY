@@ -38,5 +38,10 @@
         "type": "EvriHolder Sink Caddy - Paper",
         "footprint": "0.025g. Takes about 2-6 weeks to decompose. Paper is among the most significant significant sources of landfill methane.",
         "instructions": "Keep the paper that you recycle as clean as possible. Place paper in a designated paper recycling bin for the collection of your paper waste."
+    },
+    "046500024719": {
+        "type": "Glade Plugins Apple of my Pie 1.34oz Refill",
+        "footprint": "1.3g. Takes up to 450 years to decompose. Plastics can also leach chemicals into soil and ground water as they decompose.",
+        "instructions": "Remove glass containers, and recycle cardboard and plastic caps."
     }
 }
