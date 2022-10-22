@@ -89,12 +89,13 @@ window.onload = () => {
 
         //update upc if it exists then other info
         if(!data.codeResult) return;
-        makeRequest(data.codeResult.code, display); //weird but dk
+        //makeRequest(data.codeResult.code, display); //weird but dk
         upcText.innerHTML = data.codeResult.code;
         switchTo("info-cont");
 
+        let url = capture(video);
         // post to /upc_lookup the upc and url
-        fetch("http://localhost:8000/upc_lookup?upc=" + data.codeResult.code + "&url=" + url, {
+        fetch("https://sussy.deta.dev/upc_lookup?upc=" + data.codeResult.code + "&url=" + url, {
                 "headers": {
                     "accept": "text/html",
                     "accept-language": "en-US,en;q=0.9",
