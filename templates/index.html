@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-
         <title>Scanner</title>
-
-
-        <link href="{{ url_for('assets', path='css/index.css')}}" rel="stylesheet" />
-        <script src="{{ url_for('assets', path='/js/quagga.js')}}" rel="script"></script>
-        <script src="{{ url_for('assets', path='/js/request.js')}}" rel="script"></script>
-        <script src="{{ url_for('assets', path='/js/display.js')}}" rel="script"></script>
-        <script src="{{ url_for('assets', path='/js/camera.js')}}" rel="script"></script>
-
+        <link href="../assets/css/colors.css" rel="stylesheet"/>
+        <link href="../assets/css/style.css" rel="stylesheet"/>
+        <script src="../assets/js/quagga.js"></script>
+        <script src="../assets/js/request.js"></script>
+        <script src="../assets/js/display.js"></script>
+        <script src="../assets/js/camera.js"></script>
     </head>
     <body>
         <div class="cont camera-cont">
@@ -19,24 +16,20 @@
             </div>
         </div>
         <div class="cont info-cont">
-            <span id="prod-name">prod name</span>
+            <span id="prod-name">'{{prodName}}'</span>
             <br/>
-            <span id="upc">upc</span>
+            <span id="upc">Universal Product Code</span>
             <br/>
-            <img id="img" src="../"/>
+            <img id="img" src=""/>
             <br/>
             <span>Material:</span>
-            <span id="prod-type">prod type</span>
+            <span id="prod-type">'{{prodType}}'</span>
             <br/>
             <span>Footprint:</span>
-            <span id="footprint">footprint</span>
+            <span id="footprint">'{{footprint}}'</span>
             <br/>
             <span>Disposal Instructions:</span><br/>
-            <span id="instructions">instructions instructions instructions instructions instructions instructions instructions instructions instructions instructions</span>
-            <br>
-            <br>
+            <span id="instructions">'{{instructions}}'</span>
         </div>
     </body>
-    </div>
-</div>
 </html>
