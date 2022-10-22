@@ -1,4 +1,6 @@
-
+header{
+    text-align:center;
+}
 input, button{
     margin:10px auto;
     display:flex;
