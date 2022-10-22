@@ -96,7 +96,13 @@ window.onload = () => {
         
         let url = capture(video);
 
-        fetch("https://sussy.deta.dev/upc_lookup/" + data.codeResult.code + "/" + url)
+        fetch("https://sussy.deta.dev/upc_lookup/", {
+            method: "POST",
+            body: JSON.stringify({
+                upc: data.codeResult.code,
+                url: url
+            })
+        })
 
         //temporarily pause after scanning
         video.pause();
