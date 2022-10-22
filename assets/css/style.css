@@ -23,3 +23,11 @@ video {
 .cont {
     padding: 1%;
 }
+
+#prod-name {
+    font-weight: 700;
+}
+
+.label {
+    text-decoration: underline;
+}

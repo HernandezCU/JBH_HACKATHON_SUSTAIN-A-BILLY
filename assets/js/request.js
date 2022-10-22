@@ -4,6 +4,7 @@ function makeRequest(upc, displayFunct) {
     var xhr = new XMLHttpRequest();
     xhr.addEventListener("load", () => {
         console.debug(xhr.response);
+        displayFunct(xhr.response);
     });
     xhr.open("GET", `${SERVER_ADDRESS}/upc_lookup/${upc}`);
     xhr.send();
