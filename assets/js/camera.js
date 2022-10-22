@@ -44,7 +44,7 @@ window.onload = () => {
             ctx.strokeStyle = "#0f0";
         }, 500);
     }).catch((err) => {
-        console.error(err);
+        // console.error(err);
     });
 
 
@@ -93,28 +93,28 @@ window.onload = () => {
         upcText.innerHTML = data.codeResult.code;
         switchTo("info-cont");
 
-        let url = capture(video);
-        // post to /upc_lookup the upc and url
-        fetch("https://sussy.deta.devs/upc_lookup?upc=" + data.codeResult.code + "&url=" + url, {
-                "headers": {
-                    "accept": "text/html",
-                    "accept-language": "en-US,en;q=0.9",
-                    "cache-control": "no-cache",
-                    "pragma": "no-cache",
-                    "sec-ch-ua": "\"Google Chrome\";v=\"105\", \"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"105\"",
-                    "sec-ch-ua-mobile": "?0",
-                    "sec-ch-ua-platform": "\"macOS\"",
-                    "sec-fetch-dest": "empty",
-                    "sec-fetch-mode": "cors",
-                    "sec-fetch-site": "same-origin"
-                },
-                "referrer": "http://localhost:8000/docs",
-                "referrerPolicy": "strict-origin-when-cross-origin",
-                "body": null,
-                "method": "POST",
-                "mode": "cors",
-                "credentials": "include"
-            });
+        // let url = capture(video);
+        // // post to /upc_lookup the upc and url
+        // fetch("https://sussy.deta.dev/upc_lookup?upc=" + data.codeResult.code + "&url=" + url, {
+        //         "headers": {
+        //             "accept": "text/html",
+        //             "accept-language": "en-US,en;q=0.9",
+        //             "cache-control": "no-cache",
+        //             "pragma": "no-cache",
+        //             "sec-ch-ua": "\"Google Chrome\";v=\"105\", \"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"105\"",
+        //             "sec-ch-ua-mobile": "?0",
+        //             "sec-ch-ua-platform": "\"macOS\"",
+        //             "sec-fetch-dest": "empty",
+        //             "sec-fetch-mode": "cors",
+        //             "sec-fetch-site": "same-origin"
+        //         },
+        //         "referrer": "http://localhost:8000/docs",
+        //         "referrerPolicy": "strict-origin-when-cross-origin",
+        //         "body": null,
+        //         "method": "POST",
+        //         "mode": "cors",
+        //         "credentials": "include"
+        //     });
 
         //temporarily pause after scanning
         video.pause();
