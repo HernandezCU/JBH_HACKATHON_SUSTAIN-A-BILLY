@@ -1,5 +1,6 @@
 #from dateutil import parser
 from datetime import date, datetime as dt
+from re import U
 from fastapi import FastAPI, APIRouter, HTTPException, Request, Response, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -34,7 +35,7 @@ app.add_middleware(
 
 @app.get("/", response_class=HTMLResponse)
 async def root(request: Request):
-    return "Welcome this works!"
+    return templates.TemplateResponse("login.html", {"request": request})
 
 
 @app.post("/register", response_class=HTMLResponse)
@@ -53,14 +54,12 @@ async def create_user(request: Request, response: Response, name: str = Form(...
             key = secrets.token_urlsafe(12)
 
             u = {"key": key, "name": name, "email": email.lower(), "password": hashed_p.decode()}
-            #x = User(Key=key, Username=username, Name=name, Password_enc=hashed_p.decode(), School=school, Age=age, Favorite_Color=fav_color)
-
-            users_db.put(x.private())
+            users_db.put(u)
             
             
 
-            response.set_cookie(key="key", value=x.Key)
-            return templates.TemplateResponse("index.html", {"request": request, "user": x.private(), "attendance": attendance_db.fetch({'user': x.Key}).items})
+            response.set_cookie(key="key", value=u['key'])
+            return templates.TemplateResponse("index.html", {"request": request, "user": u})
 
 
         except Exception as e:
