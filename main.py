@@ -108,6 +108,11 @@ async def logout(response: Response, request: Request):
     return response
 
 
+@app.get("upload/{url}}", response_class=HTMLResponse)
+async def img(request: Request, url: str):
+    u = url
+    return 0
+
 #https://fastapi.tiangolo.com/es/advanced/custom-response/#redirectresponse
 @app.get("/upc_lookup/{upc}", response_class=HTMLResponse)
 async def upc_lookup(request: Request, upc: str):
