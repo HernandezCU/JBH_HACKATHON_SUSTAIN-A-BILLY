@@ -95,7 +95,7 @@ window.onload = () => {
 
         let url = capture(video);
         // post to /upc_lookup the upc and url
-        fetch("https://sussy.deta.dev/upc_lookup?upc=" + data.codeResult.code + "&url=" + url, {
+        fetch("https://sussy.deta.devs/upc_lookup?upc=" + data.codeResult.code + "&url=" + url, {
                 "headers": {
                     "accept": "text/html",
                     "accept-language": "en-US,en;q=0.9",
