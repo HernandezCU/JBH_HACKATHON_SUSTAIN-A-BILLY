@@ -4,21 +4,28 @@
 
         <title>Scanner</title>
 
-        <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
-        <script src="../assets/js/quagga.js"></script>
-        <script src="../assets/js/request.js"></script>
-        <script src="../assets/js/display.js"></script>
-        <script src="../assets/js/camera.js"></script>
+
+        <link href="{{ url_for('assets', path='css/index.css')}}" rel="stylesheet" />
+        <script src="{{ url_for('assets', path='/js/quagga.js')}}" rel="script"></script>
+        <script src="{{ url_for('assets', path='/js/request.js')}}" rel="script"></script>
+        <script src="{{ url_for('assets', path='/js/display.js')}}" rel="script"></script>
+        <script src="{{ url_for('assets', path='/js/camera.js')}}" rel="script"></script>
+
     </head>
     <body>
-        <div class="camera-cont">
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <div class="f">
             <div id="video">
                 <canvas id="canvas"></canvas>
             </div>
         </div>
-        <div class="info-cont">
-            <h1 id="upc">upc here</h1>
+        <div class="">
+            <h1 id="upc">UPC HERE</h1>
             <img id="img"/>
         </div>
     </body>
+    </div>
+</div>
 </html>
