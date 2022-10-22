@@ -15,7 +15,7 @@ users_db = deta.Base("users")
 
 
 app = FastAPI()
-#app.mount("/assets", StaticFiles(directory="assets"), name="assets")
+app.mount("/assets", StaticFiles(directory="assets"), name="assets")
 
 templates = Jinja2Templates(directory="templates")
 
@@ -124,4 +124,4 @@ async def catch_all(request: Request, path_name: str):
 
 # if __name__ == "__main__":
 #     import uvicorn
-#     uvicorn.run("main:app", host="localhost", reload=True)
+#     uvicorn.run("main:app", host="0.0.0.0", reload=True)
