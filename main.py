@@ -106,12 +106,11 @@ async def logout(response: Response, request: Request):
     response = templates.TemplateResponse("redirect.html", {"request": request, "url": "/"})
     response.delete_cookie("key", path="/")
     
-    
     return response
 
 
 #https://fastapi.tiangolo.com/es/advanced/custom-response/#redirectresponse
-@app.post("/upc_lookup", response_class=HTMLResponse)
+@app.post("/upc_lookup/{upc}", response_class=HTMLResponse)
 async def upc_lookup(request: Request, upc: str):
     i_upc = upc
     return 0
