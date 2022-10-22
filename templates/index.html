@@ -2,12 +2,15 @@
 <html>
     <head>
         <title>Scanner</title>
-        <link href="../assets/css/colors.css" rel="stylesheet"/>
-        <link href="../assets/css/style.css" rel="stylesheet"/>
-        <script src="../assets/js/quagga.js"></script>
-        <script src="../assets/js/request.js"></script>
-        <script src="../assets/js/display.js"></script>
-        <script src="../assets/js/camera.js"></script>
+        <link rel="stylesheet" href="{{ url_for('assets', path='css/colors.css')}}">
+        <link rel="stylesheet" href="{{ url_for('assets', path='css/style.css')}}">
+
+        
+        <script src="{{ url_for('assets', path='/js/quagga.js')}}" rel="script"></script>
+        <script src="{{ url_for('assets', path='/js/request.js')}}" rel="script"></script>
+        <script src="{{ url_for('assets', path='/js/display.js')}}" rel="script"></script>
+        <script src="{{ url_for('assets', path='/js/camera.js')}}" rel="script"></script>
+
     </head>
     <body>
         <div class="cont camera-cont">
