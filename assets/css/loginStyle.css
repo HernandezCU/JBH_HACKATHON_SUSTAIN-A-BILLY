@@ -1,5 +1,5 @@
 body {
-    background: rgb(133, 212, 133);
+    background-image: linear-gradient(rgb(133, 212, 133), green) rgb(133, 212, 133);
     margin: 0;
     position: absolute;
     top: 50%;
