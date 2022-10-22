@@ -84,6 +84,7 @@ async def create_user(request: Request, response: Response, name: str = Form(...
         response = templates.TemplateResponse("redirect.html", {"request": request, "url": "/"})
         return response
 
+
     else:
         try:
             p = password.encode()
