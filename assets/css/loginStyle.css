@@ -34,7 +34,8 @@ p {
 }
 
 #login {
-    visibility: visible;
+    display: inline;
+    /*visibility: visible;*/
 }
 
 #register {

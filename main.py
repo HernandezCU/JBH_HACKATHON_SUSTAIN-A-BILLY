@@ -39,17 +39,17 @@ async def root(request: Request):
 
     if k is None:
         return templates.TemplateResponse("login.html", {"request": request})
-        
+
     else:
         try:
             j = users_db.fetch({"key": k})
-            
+
         except Exception as e:
             print(e)
             raise HTTPException(status_code=422, detail="Something went wrong")
 
         return templates.TemplateResponse("index.html", {"request": request, "user": j.items[0]})
-    
+
     #return templates.TemplateResponse("login.html", {"request": request})
 
 
@@ -60,7 +60,7 @@ async def login_user(response: Response, request: Request, email: str = Form(...
     if j.count == 1:
         x = bcrypt.checkpw(password.encode(), j.items[0]['password'].encode())
         user = j.items[0]
-        
+
         if x ==  True:
             response = templates.TemplateResponse("redirect.html", {"request": request, "url": "/"})
             response.set_cookie(key="key", value=user['key'])
@@ -69,9 +69,9 @@ async def login_user(response: Response, request: Request, email: str = Form(...
         else:
             response = templates.TemplateResponse("redirect.html", {"request": request, "url": "/"})
             return response
-            
+
     else:
-        response = templates.TemplateResponse("redirect.html", {"request": request, "url": "/"})            
+        response = templates.TemplateResponse("redirect.html", {"request": request, "url": "/"})
         return response
 
 
@@ -80,7 +80,7 @@ async def create_user(request: Request, response: Response, name: str = Form(...
 
     j = users_db.fetch({"email": email.lower()})
 
-    if j.count != 0: 
+    if j.count != 0:
         response = templates.TemplateResponse("redirect.html", {"request": request, "url": "/"})
         return response
 
@@ -92,7 +92,7 @@ async def create_user(request: Request, response: Response, name: str = Form(...
 
             u = {"key": key, "name": name, "email": email.lower(), "password": hashed_p.decode()}
             users_db.put(u)
-            
+
             response.set_cookie(key="key", value=u['key'])
             return templates.TemplateResponse("index.html", {"request": request, "user": u})
 
@@ -104,7 +104,7 @@ async def create_user(request: Request, response: Response, name: str = Form(...
 
 @app.get("/logout", response_class=HTMLResponse)
 async def logout(response: Response, request: Request):
-    
+
     response = templates.TemplateResponse("redirect.html", {"request": request, "url": "/"})
     response.delete_cookie("key", path="/")
     return response
@@ -113,7 +113,7 @@ async def logout(response: Response, request: Request):
 #https://fastapi.tiangolo.com/es/advanced/custom-response/#redirectresponse
 @app.get("/upc_lookup/{upc}", response_class=HTMLResponse)
 async def upc_lookup(request: Request, upc: str):
-    i_upc = upc 
+    i_upc = upc
     return "upc: " + upc
 
 
@@ -125,4 +125,3 @@ async def catch_all(request: Request, path_name: str):
 # if __name__ == "__main__":
 #     import uvicorn
 #     uvicorn.run("main:app", host="localhost", reload=True)
-    
