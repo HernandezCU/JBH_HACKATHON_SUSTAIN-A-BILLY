@@ -35,11 +35,48 @@ app.add_middleware(
 
 @app.get("/", response_class=HTMLResponse)
 async def root(request: Request):
-    return templates.TemplateResponse("login.html", {"request": request})
+    k = request.cookies.get("key")
+
+    if k is None:
+        return templates.TemplateResponse("login.html", {"request": request})
+        
+    else:
+        try:
+            j = users_db.fetch({"key": k})
+            
+        except Exception as e:
+            print(e)
+            raise HTTPException(status_code=422, detail="Something went wrong")
+
+        return templates.TemplateResponse("index.html", {"request": request, "user": j.items[0]})
+    
+    #return templates.TemplateResponse("login.html", {"request": request})
+
+
+@app.post("/login")
+async def login_user(response: Response, request: Request, email: str = Form(...), password: str = Form(...)):
+    j = users_db.fetch({"email": email.lower()})
+
+    if j.count == 1:
+        x = bcrypt.checkpw(password.encode(), j.items[0]['password'].encode())
+        user = j.items[0]
+        
+        if x ==  True:
+            response = templates.TemplateResponse("redirect.html", {"request": request, "url": "/"})
+            response.set_cookie(key="key", value=user['key'])
+            return response
+
+        else:
+            response = templates.TemplateResponse("redirect.html", {"request": request, "url": "/"})
+            return response
+            
+    else:
+        response = templates.TemplateResponse("redirect.html", {"request": request, "url": "/"})            
+        return response
 
 
 @app.post("/register", response_class=HTMLResponse)
-async def create_user(request: Request, response: Response, name: str = Form(...), email: str() = Form(...), password: str = Form(...)):
+async def create_user(request: Request, response: Response, name: str = Form(...), email: str = Form(...), password: str = Form(...)):
 
     j = users_db.fetch({"email": email.lower()})
 
@@ -56,16 +93,21 @@ async def create_user(request: Request, response: Response, name: str = Form(...
             u = {"key": key, "name": name, "email": email.lower(), "password": hashed_p.decode()}
             users_db.put(u)
             
-            
-
             response.set_cookie(key="key", value=u['key'])
             return templates.TemplateResponse("index.html", {"request": request, "user": u})
-
 
         except Exception as e:
             print(e)
             response = templates.TemplateResponse("redirect.html", {"request": request, "url": "/"})
             return response
+
+
+@app.get("/logout", response_class=HTMLResponse)
+async def logout(response: Response, request: Request):
+    
+    response = templates.TemplateResponse("redirect.html", {"request": request, "url": "/"})
+    response.delete_cookie("key", path="/")
+    return response
 
 
 #https://fastapi.tiangolo.com/es/advanced/custom-response/#redirectresponse
