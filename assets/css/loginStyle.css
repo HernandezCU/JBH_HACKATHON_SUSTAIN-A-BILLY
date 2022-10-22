@@ -1,5 +1,9 @@
+body{
+    background:rgb(133, 212, 133);
+}
 header{
     text-align:center;
+    font-size:50px;
 }
 input, button{
     margin:10px auto;
@@ -7,6 +11,7 @@ input, button{
 }
 p{
     font-family: 'Mukta', sans-serif;
+    text-align:center;
 }
 #register{
     display:none;
