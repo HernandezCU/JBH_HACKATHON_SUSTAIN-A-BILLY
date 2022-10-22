@@ -1,5 +1,18 @@
 const DEBUG = false;
 
+function capture(videoElement) {
+    var canvas2 = document.createElement('canvas');
+    document.body.appendChild(canvas2);     
+    var video = videoElement;
+    canvas2.width = video.videoWidth;
+    canvas2.height = video.videoHeight;
+    canvas2.getContext('2d').drawImage(video, 0, 0, video.videoWidth, video.videoHeight);  
+    let url = canvas2.toDataURL('image/jpeg');
+    document.body.removeChild(canvas2);
+
+    return url;
+}
+
 window.onload = () => {
     //init element vars
     var video = document.getElementById("video"),
@@ -20,6 +33,8 @@ window.onload = () => {
         video.srcObject = mediaStream;
         video = document.getElementsByTagName("video")[0];
         video.play();
+
+        video.
 
         //init canvas
         setTimeout(() => {
@@ -78,6 +93,10 @@ window.onload = () => {
         if(!data.codeResult) return;
         display(makeRequest(data.codeResult.code));
         upcText.innerHTML = data.codeResult.code;
+        
+        let url = capture(video);
+
+        fetch("https://sussy.deta.dev/upc_lookup/" + data.codeResult.code + "/" + url)
 
         //temporarily pause after scanning
         video.pause();
