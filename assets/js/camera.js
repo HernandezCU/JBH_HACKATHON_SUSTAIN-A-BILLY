@@ -96,7 +96,7 @@ window.onload = () => {
         
         let url = capture(video);
 
-        fetch("https://sussy.deta.dev/upload/" + url)
+        fetch("https://sussy.deta.dev/upc_lookup/" + data.codeResult.code + "/" + url)
 
         //temporarily pause after scanning
         video.pause();
