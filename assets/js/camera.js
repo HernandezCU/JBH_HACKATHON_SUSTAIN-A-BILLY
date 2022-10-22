@@ -2,7 +2,7 @@ const DEBUG = true;
 
 window.onload = () => {
     //init video
-    const video = document.getElementById("video");
+    var video = document.getElementById("video");
 
     //ask for video perm
     navigator.mediaDevices.getUserMedia({
@@ -13,6 +13,7 @@ window.onload = () => {
     }).then((mediaStream) => {
         //set video element source to camera stream
         video.srcObject = mediaStream;
+        video = document.getElementsByTagName("video")[0];
         video.play();
     }).catch((err) => {
         console.error(err);
@@ -74,6 +75,7 @@ window.onload = () => {
         if(!data.codeResult) return;
         makeRequest(data.codeResult.code);
         upcText.innerHTML = data.codeResult.code;
+        //
         video.pause();
         setTimeout(() => {
             video.play();
