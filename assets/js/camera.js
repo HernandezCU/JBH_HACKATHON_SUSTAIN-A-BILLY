@@ -34,9 +34,7 @@ window.onload = () => {
         video = document.getElementsByTagName("video")[0];
         video.play();
 
-        video.
-
-        //init canvas
+        //init canvas (scuff)
         setTimeout(() => {
             canvas = document.getElementById("canvas");
             ctx = canvas.getContext("2d");
@@ -91,10 +89,9 @@ window.onload = () => {
 
         //update upc if it exists then other info
         if(!data.codeResult) return;
-        display(makeRequest(data.codeResult.code));
+        makeRequest(data.codeResult.code, display); //weird but dk
         upcText.innerHTML = data.codeResult.code;
-        
-        let url = capture(video);
+        switchTo("info-cont");
 
         fetch("https://sussy.deta.dev/upc_lookup/", {
             method: "POST",
