@@ -6,6 +6,7 @@
 }
 /* BASIC */
 
+
 html {
   background-color: var(--green);
 }
@@ -289,8 +290,6 @@ input[type=password]:placeholder {
 .underlineHover:hover:after{
   width: 100%;
 }
-
-
 
 /* OTHERS */
 
