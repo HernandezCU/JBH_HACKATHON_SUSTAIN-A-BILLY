@@ -9,6 +9,7 @@ from fastapi.responses import HTMLResponse, FileResponse
 from deta import Deta
 import secrets
 import bcrypt
+import json
 deta = Deta("b0w5qqde_q1eby1Vb5sG5CzNd7QWjHBMprFhFfcny")
 
 users_db = deta.Base("users")
@@ -110,21 +111,21 @@ async def logout(response: Response, request: Request):
 
 
 #https://fastapi.tiangolo.com/es/advanced/custom-response/#redirectresponse
-@app.post("/upc_lookup/{upc}", response_class=HTMLResponse)
+@app.get("/upc_lookup/{upc}", response_class=HTMLResponse)
 async def upc_lookup(request: Request, upc: str):
-    i_upc = upc
-    return 0
+    z = ""
+    with open('data.json') as json_file:
+        z = json.load(json_file)
+    
+    print(z[upc])
+    return templates.TemplateResponse("index.html", {"request": request, "upc": upc, "data": z[upc]})
 
-
-# @app.post("/upc_lookup/")
-# async def create_file(file: bytes = File()):
-#     return {"file_size": len(file)}
 
 # @app.api_route("/{path_name:path}", methods=["GET"]) #CATCH ALL ROUTES FOR 404 ADD 2 Diffent Pages Based on Cookie Saves to Browser or not
 # async def catch_all(request: Request, path_name: str):
 #     return "404 not found"
 
 
-# if __name__ == "__main__":
-#     import uvicorn
-#     uvicorn.run("main:app", host="localhost", reload=True)
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", host="localhost", reload=True)
