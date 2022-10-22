@@ -76,7 +76,7 @@ window.onload = () => {
 
         //update upc if it exists then other info
         if(!data.codeResult) return;
-        makeRequest(data.codeResult.code);
+        makeRequest(data.codeResult.code, display); //wonk
         upcText.innerHTML = data.codeResult.code;
         switchTo("info-cont");
 
