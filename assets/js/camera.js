@@ -74,5 +74,9 @@ window.onload = () => {
         if(!data.codeResult) return;
         makeRequest(data.codeResult.code);
         upcText.innerHTML = data.codeResult.code;
+        video.pause();
+        setTimeout(() => {
+            video.play();
+        }, 500);
     });
 };
