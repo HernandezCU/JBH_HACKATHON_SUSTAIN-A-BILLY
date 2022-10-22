@@ -120,6 +120,6 @@ async def catch_all(request: Request, path_name: str):
     return "404 not found"
 
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", reload=True)
+# if __name__ == "__main__":
+#     import uvicorn
+#     uvicorn.run("main:app", host="0.0.0.0", reload=True)
