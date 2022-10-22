@@ -1,21 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class = "camButton">
-        
-        <button type = "button"></button>
-        
-    </div>
-
-    <video id="camera-display" width="640" height="480"></video>
-    <canvas id="canvas" width="640" height="480"></canvas>
-    <link href="./style.css" type="text/css" rel="stylesheet"/>
-    <script src="./camera.js"></script>
-</body>
+<html>
+    <head>
+        <title>Scanner</title>
+        <link href="../assets/css/style.css" type="text/css" rel="stylesheet"/>
+        <script src="../assets/js/quagga.js"></script>
+        <script src="../assets/js/request.js"></script>
+        <script src="../assets/js/camera.js"></script>
+    </head>
+    <body>
+        <div class="camera-cont">
+            <video id="video">
+                <canvas id="canvas"></canvas>
+            </video>
+        </div>
+        <div class="info-cont">
+            <h1 id="upc">upc here</h1>
+        </div>
+    </body>
 </html>
