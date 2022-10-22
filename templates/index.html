@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
+
         <title>Scanner</title>
-        <link href="../assets/css/style.css" type="text/css" rel="stylesheet"/>
-        <script src="../assets/js/quagga.js"></script>
-        <script src="../assets/js/request.js"></script>
-        <script src="../assets/js/camera.js"></script>
+
+        <link href="{{ url_for('assets', path='css/style.css')}}" rel="stylesheet" />
+        <script src="{{ url_for('assets', path='/js/quagga.js')}}" rel="script"></script>
+        <script src="{{ url_for('assets', path='/js/request.js')}}" rel="script"></script>
+        <script src="{{ url_for('assets', path='/js/camera.js')}}" rel="script"></script>
+        
     </head>
     <body>
         <div class="camera-cont">
-            <video id="video">
+            <video id="video" autoplay playsinline muted loop>
                 <canvas id="canvas"></canvas>
             </video>
         </div>
