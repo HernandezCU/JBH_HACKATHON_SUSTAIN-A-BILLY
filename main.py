@@ -114,11 +114,16 @@ async def logout(response: Response, request: Request):
 @app.get("/upc_lookup/{upc}", response_class=HTMLResponse)
 async def upc_lookup(request: Request, upc: str):
     z = ""
-    with open('data.json') as json_file:
+    with open('database.json') as json_file:
         z = json.load(json_file)
+    print(z[upc]['type'])
     
-    return {z[upc]}
-
+    return json.dumps({
+        "type": z[upc]['type'],
+        "material": z[upc]['material'],
+        "footprint": z[upc]['footprint'],
+        "instructions": z[upc]['instructions']
+    })
 
 # @app.api_route("/{path_name:path}", methods=["GET"]) #CATCH ALL ROUTES FOR 404 ADD 2 Diffent Pages Based on Cookie Saves to Browser or not
 # async def catch_all(request: Request, path_name: str):
